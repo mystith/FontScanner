@@ -67,12 +67,22 @@ namespace FontScanner
                 {
                     SaveTxt(character);
                     PrintBoolMap(character);
-                    File.Move(character.GetHashCode() + ".txt", Console.ReadKey().KeyChar + ".txt");
+                    
+                    //Read valid char.
+                    char c;
+                    while (Path.GetInvalidFileNameChars().Contains(c = Console.ReadKey().KeyChar)) ;
+                    
+                    File.Move(character.GetHashCode() + ".txt",  c + ".txt");
                 } else
                 {
                     SavePng(character);
                     PrintBoolMap(character);
-                    File.Move(character.GetHashCode() + ".png", Console.ReadKey().KeyChar + ".png");
+                    
+                    //Read valid char.
+                    char c;
+                    while (Path.GetInvalidFileNameChars().Contains(c = Console.ReadKey().KeyChar)) ;
+                    
+                    File.Move(character.GetHashCode() + ".png",  c + ".png");
                 }
             }
         }
@@ -86,7 +96,7 @@ namespace FontScanner
             for (int y = 0; y < height; y++)
             {
                 for (int x = 0; x < width; x++)
-                    Console.Write('█');
+                    Console.Write(character[x, y] ? '█' : ' ');
                 Console.WriteLine();
             }
             Console.WriteLine();
