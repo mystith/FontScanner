@@ -67,6 +67,7 @@ namespace FontScanner
                 {
                     SaveTxt(character);
                     PrintBoolMap(character);
+                    Console.WriteLine();
                     
                     //Read valid char.
                     char c;
@@ -77,6 +78,7 @@ namespace FontScanner
                 {
                     SavePng(character);
                     PrintBoolMap(character);
+                    Console.WriteLine();
                     
                     //Read valid char.
                     char c;
