@@ -13,8 +13,13 @@ namespace FontScanner
         static void Main(string[] args)
         {
             //Ensure proper syntax
-            if(args.Length == 0 || !Directory.Exists(args[0]))
-                Console.WriteLine("Please pass a valid directory as an argument.\n    Arguments: fontscanner [directory] (boolean)\n    boolean: saves fonts as text files of 1 and 0, rather than PNG files.");
+            if (args.Length == 0 || !Directory.Exists(args[0]))
+            {
+                Console.WriteLine("Please pass a valid directory as an argument.");
+                Console.WriteLine("    Arguments: fontscanner [directory] (boolean)");
+                Console.WriteLine("    boolean: saves fonts as text files of 1 and 0, rather than PNG files.");
+                return;
+            }
             
             //Generate font
             using(Image img = Image.FromFile(args[0]))
