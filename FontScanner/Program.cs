@@ -20,11 +20,16 @@ namespace FontScanner
                 Console.WriteLine("    boolean: saves fonts as text files of 1 and 0, rather than PNG files.");
                 return;
             }
-            
-            //Generate font
-            using(Image img = Image.FromFile(args[0]))
-            using (Bitmap bmp = img as Bitmap)
-                GenerateFont(BitmapToBoolean(bmp), bmp.Width, bmp.Height, args.Length > 1 && args[1].ToLower() != "boolean");
+
+            //Loop over directory
+            foreach (string file in Directory.GetFiles(args[0]))
+            {
+                //Generate font
+                using (Image img = Image.FromFile(file))
+                using (Bitmap bmp = img as Bitmap)
+                    GenerateFont(BitmapToBoolean(bmp), bmp.Width, bmp.Height,
+                        args.Length > 1 && args[1].ToLower() != "boolean");
+            }
         }
 
         //Scan boolmap for text.
